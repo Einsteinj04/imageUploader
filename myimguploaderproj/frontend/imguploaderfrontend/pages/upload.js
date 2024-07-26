@@ -1,24 +1,21 @@
 import axios from "axios";
-import {useState} from 'react'
+import {useState, useRef} from 'react'
 import Loader from './loader'
 import '../src/app/globals.css'
 
 export default function Upload(){
    const [message, setMessage] = useState('')
-   const [selectedFile, setSelectedFile] = useState(null)
    const [imgPath, setImgPath] = useState('')
    const [loading, setLoading] = useState(false)
+   const fileInputRef = useRef(null)
 
-   const handleFileInput = (e) => {
-        setSelectedFile(e.target.files[0])
-   }
-  const handleSubmit = async (e) => {
-    e.preventDefault()
 
-    if (selectedFile){
-        setLoading(true)
+  const handleSubmit = async (file) => {
+
+    if (file){
+      setLoading(true)
       const formData = new FormData();
-      formData.append('upload',selectedFile);
+      formData.append('upload',file);
       const response = await axios.post('http://127.0.0.1:8000/api/upload/',formData,{
         headers: {
           'Content-Type': 'multipart/form-data'
@@ -32,18 +29,22 @@ export default function Upload(){
       setMessage('No image uploaded')
     }
   }
-
+  const handleFileInput = (e) => {
+    handleSubmit(e.target.files[0])
+}
    return(
-    <div className="min-h-screen bg-white">
-        {loading?<Loader/>:
-        <form onSubmit = {handleSubmit} className="">
-        <h1 className="underline text-3xl text-red-700">Upload your images here</h1>
-        <input type="file" onChange = {handleFileInput}/><br/><br/>
+    <div className="min-h-screen bg-green-400 flex justify-center items-center">
+      <div className="bg-white w-auto h-auto border-4 rounded-xl">
+      {loading?<Loader/>:
+        <section className="">
+        <h1 className=" text-xl text-[#4F4F4F]">Upload your image</h1>
+        <input type="file" onChange = {handleFileInput} className="opacity-0" ref={fileInputRef}/><br/><br/>
         <img src = {imgPath?`http://localhost:8000${imgPath}`: ''}
          style={{ width: '200px', height: 'auto', margin: '10px' }}/>
-        <button>Upload</button>
+        <button className="bg-red-500" onClick={()=>{fileInputRef.current.click()}}>Upload your image</button>
         <p>{message}</p>
-      </form>}
+      </section>}
+      </div>
     </div>
    )
 }
@@ -102,3 +103,4 @@ export default function Upload(){
 
 
 
+       
