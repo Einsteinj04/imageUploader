@@ -1,7 +1,7 @@
 export default function Loader(){
     return(
         <div>
-            <h1 className="underline text-3xl">Loading...</h1>
+            <h1 className=" text-2xl">Uploading...</h1>
         </div>
     )
 }
