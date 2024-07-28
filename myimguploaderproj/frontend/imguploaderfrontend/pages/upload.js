@@ -1,6 +1,7 @@
 import axios from "axios";
-import {useState, useRef} from 'react'
+import {useState, useRef, useCallback} from 'react'
 import Loader from './loader'
+import { FaCheckCircle } from "react-icons/fa";
 import '../src/app/globals.css'
 
 export default function Upload(){
@@ -38,20 +39,32 @@ export default function Upload(){
   const handleFileInput = (e) => {
     handleSubmit(e.target.files[0])
 }
+const onDrop = useCallback((event) => {
+  event.preventDefault();
+  const files = event.dataTransfer.files;
+  if (files && files[0]) {
+    handleSubmit(files[0]);
+  }
+}, []);
    return(
     <div className="min-h-screen bg-slate-200 flex justify-center items-center">
-      <div className="bg-white w-auto h-auto border-4 rounded-xl  min-w-80">
+      <div className="bg-white h-auto border-4 rounded-xl  w-80 py-4">
       {loading?<Loader/>:
         <section className="p-3  flex flex-col justify-center items-center">
           {message == 'Uploaded Sucessfully'?
+          <div className="flex items-center gap-2">
           <h1 className=" text-xl text-[#4F4F4F]">Uploaded Sucessfully</h1>
+            <FaCheckCircle className=" text-3xl text-green-500"/>
+          </div>
           :
           <>
             <h1 className="p-3 text-xl text-[#4F4F4F]">Upload your image</h1>
             <p className="text-xs text-slate-500">File should be Jpeg, Png,...</p>
           </>}
-          <div className="border-8 h-52 w-full bg-slate-100 rounded my-5 border-dotted border-slate-300">
-            {/* <p className="">Hi</p> */}
+          <div className="border-8 h-52 w-full bg-slate-100 rounded my-5 border-dotted border-slate-300"
+          onDrop={onDrop}
+          onDragOver={(e) => e.preventDefault()}>
+            {/* <p className="absolute top-[50%] left-[50%] ">Hi</p> */}
             <input type="file" onChange = {handleFileInput} className=" hidden" ref={fileInputRef}/>
             <div className="h-full w-full rounded">
             <img src = {imgPath?`http://localhost:8000${imgPath}`: ' '} className="h-full w-full"/> 
@@ -59,12 +72,15 @@ export default function Upload(){
           </div>
           <div className="">
           {message == 'Uploaded Sucessfully'?
-
           <div className="flex">
             <input type="text" value={`http://localhost:8000${imgPath}`} ref={clipboardRef} className="border-2 bg-slate-200 p-2 text-slate-500"/>
-            <button className="bg-blue-500 p-2 rounded text-white" onClick={handleClipboard}>Copy to clipboard</button>
+            <button className="bg-blue-500 p-2 rounded text-white" onClick={handleClipboard}>Copy URL</button>
           </div>
-          :<button className="bg-blue-500 p-2 rounded text-white" onClick={()=>{fileInputRef.current.click()}}>Upload your image</button>}
+          :
+          <>
+            <p className="py-2 text-xl text-slate-500 text-center">OR</p>
+            <button className="bg-blue-500 p-2 rounded text-white" onClick={()=>{fileInputRef.current.click()}}>Upload your image</button>
+          </>}
           </div>
           {/* <p>{message}</p> */}
       </section>}

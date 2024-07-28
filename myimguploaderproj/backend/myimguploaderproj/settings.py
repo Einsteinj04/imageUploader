@@ -115,6 +115,15 @@ AUTH_PASSWORD_VALIDATORS = [
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
 ]
+# settings.py
+
+# ALLOWED_HOSTS = [
+#     '127.0.0.1',
+#     'localhost',
+#     '.yourdomain.com',  # Your domain name
+#     '192.168.100.21',    # Allows access from any IP in this subnet
+# ]
+
 
 
 # Internationalization
@@ -140,4 +149,4 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_ROOT = BASE_DIR / 'media' 
