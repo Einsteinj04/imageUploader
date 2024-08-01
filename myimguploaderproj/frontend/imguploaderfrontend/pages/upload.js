@@ -37,7 +37,6 @@ export default function Upload(){
       setMessage('No image uploaded')
     }
   }
-  console.log(response)
   const handleFileInput = (e) => {
     handleSubmit(e.target.files[0])
 }
