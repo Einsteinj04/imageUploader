@@ -112,9 +112,10 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-CORS_ALLOWED_ORIGINS = [
-    'https://image-uploader-ashen-chi.vercel.app'
-]
+CORS_ALLOWED_ORIGINS = True
+#[
+    #'https://image-uploader-ashen-chi.vercel.app'
+#]
 # settings.py
 
 # ALLOWED_HOSTS = [
