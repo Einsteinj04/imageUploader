@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-##4$x)+a0%=%saf7()5vrs)w80(84%)(tp#pda%454+m64z(#$
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://0403.pythonanywhere.com']
+ALLOWED_HOSTS = ['0403.pythonanywhere.com', 'image-uploader-ashen-chi.vercel.app']
 
 
 # Application definition
