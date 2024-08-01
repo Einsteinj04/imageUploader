@@ -23,7 +23,7 @@ export default function Upload(){
       setLoading(true)
       const formData = new FormData();
       formData.append('upload',file);
-      const response = await axios.post('https://0403.pythonanywhere.com/api/upload',formData,{
+      const response = await axios.post('https://0403.pythonanywhere.com/api/upload/',formData,{
         headers: {
           'Content-Type': 'multipart/form-data'
         }
