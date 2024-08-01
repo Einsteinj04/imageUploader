@@ -28,6 +28,7 @@ export default function Upload(){
           'Content-Type': 'multipart/form-data'
         }
       })
+      console.log(response)
       setLoading(false)
       setMessage('Uploaded Sucessfully')
       setImgPath(response.data.upload)
@@ -36,6 +37,7 @@ export default function Upload(){
       setMessage('No image uploaded')
     }
   }
+  console.log(response)
   const handleFileInput = (e) => {
     handleSubmit(e.target.files[0])
 }
