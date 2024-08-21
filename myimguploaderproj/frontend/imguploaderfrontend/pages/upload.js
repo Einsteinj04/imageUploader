@@ -5,29 +5,30 @@ import { FaCheckCircle } from "react-icons/fa";
 import '../src/app/globals.css'
 
 export default function Upload(){
-   const [message, setMessage] = useState('')
-   const [imgPath, setImgPath] = useState('')
-   const [loading, setLoading] = useState(false)
+  const [message, setMessage] = useState('')
+  const [imgPath, setImgPath] = useState('')
+  const [loading, setLoading] = useState(false)
    const fileInputRef = useRef(null)
    const clipboardRef = useRef(null)
 
   const handleClipboard = () => {
     clipboardRef.current.select()
     clipboardRef.current.setSelectionRange(0, 99999); // For mobile devices
-
+    
     navigator.clipboard.writeText(clipboardRef.current.value)
   }
   const handleSubmit = async (file) => {
 
     if (file){
-      setLoading(true)
       const formData = new FormData();
       formData.append('upload',file);
-      const response = await axios.post('http://127.0.0.1:8000/api/upload/',formData,{
+      setLoading(true)
+      const response = await axios.post('https://0403.pythonanywhere.com/api/upload/',formData,{
         headers: {
-          'Content-Type': 'multipart/form-data'
-        }
+        'Content-Type': 'multipart/form-data'
+      }
       })
+      //http://127.0.0.1:8000/api/upload/
       setLoading(false)
       setMessage('Uploaded Sucessfully')
       setImgPath(response.data.upload)
@@ -67,15 +68,16 @@ const onDrop = useCallback((event) => {
             {/* <p className="absolute top-[50%] left-[50%] ">Hi</p> */}
             <input type="file" onChange = {handleFileInput} className=" hidden" ref={fileInputRef}/>
             <div className="h-full w-full rounded">
-            <img src = {imgPath?`http://localhost:8000${imgPath}`: ' '} className="h-full w-full"/> 
+            <img src = {imgPath?`https://0403.pythonanywhere.com${imgPath}`: ' '} className="h-full w-full"/> 
             </div> 
           </div>
           <div className="">
           {message == 'Uploaded Sucessfully'?
           <div className="flex">
-            <input type="text" value={`http://localhost:8000${imgPath}`} ref={clipboardRef} className="border-2 bg-slate-200 p-2 text-slate-500"/>
+            <input type="text" value={`https://0403.pythonanywhere.com${imgPath}`} ref={clipboardRef} className="border-2 bg-slate-200 p-2 text-slate-500"/>
             <button className="bg-blue-500 p-2 rounded text-white" onClick={handleClipboard}>Copy URL</button>
           </div>
+          // http://localhost:8000${imgPath}
           :
           <>
             <p className="py-2 text-xl text-slate-500 text-center">OR</p>
