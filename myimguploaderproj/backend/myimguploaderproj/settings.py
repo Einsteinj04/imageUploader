@@ -7,7 +7,7 @@ For more information on this file, see
 https://docs.djangoproject.com/en/5.0/topics/settings/
 
 For the full list of settings and their values, see
-https://docs.djangoproject.com/en/5.0/ref/settings/
+https://docs.djangoproject.com/en/5.0/ref/settings/ 
 """
 
 from pathlib import Path
@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-##4$x)+a0%=%saf7()5vrs)w80(84%)(tp#pda%454+m64z(#$
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['0403.pythonanywhere.com', 'image-uploader-ashen-chi.vercel.app']
 
 
 # Application definition
@@ -112,9 +112,10 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-CORS_ALLOWED_ORIGINS = [
-    'http://localhost:3000',
-]
+CORS_ALLOWED_ORIGINS = True
+#[
+    #'https://image-uploader-ashen-chi.vercel.app'
+#]
 # settings.py
 
 # ALLOWED_HOSTS = [
@@ -149,4 +150,10 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL = '/media/'
+<<<<<<< HEAD
 MEDIA_ROOT = BASE_DIR / 'media'  
+=======
+MEDIA_ROOT = BASE_DIR / 'media' 
+APPEND_SLASH = False
+
+>>>>>>> c65fd3cfaec8ff2a6f09fdf1c4324746fa0d85c7
