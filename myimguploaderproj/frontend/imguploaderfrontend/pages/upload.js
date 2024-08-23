@@ -28,6 +28,7 @@ export default function Upload(){
         'Content-Type': 'multipart/form-data'
       }
       })
+      console.log(response);
       //http://127.0.0.1:8000/api/upload/
       setLoading(false)
       setMessage('Uploaded Sucessfully')
