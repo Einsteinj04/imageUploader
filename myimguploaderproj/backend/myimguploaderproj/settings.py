@@ -55,11 +55,11 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'myimguploaderproj.urls'
@@ -112,10 +112,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-CORS_ALLOWED_ORIGINS = True
-#[
-    #'https://image-uploader-ashen-chi.vercel.app'
-#]
+CORS_ALLOWED_ORIGINS = [
+    'https://pics-uploader.vercel.app'
+]
 # settings.py
 
 # ALLOWED_HOSTS = [
@@ -150,10 +149,4 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL = '/media/'
-<<<<<<< HEAD
 MEDIA_ROOT = BASE_DIR / 'media'  
-=======
-MEDIA_ROOT = BASE_DIR / 'media' 
-APPEND_SLASH = False
-
->>>>>>> c65fd3cfaec8ff2a6f09fdf1c4324746fa0d85c7
