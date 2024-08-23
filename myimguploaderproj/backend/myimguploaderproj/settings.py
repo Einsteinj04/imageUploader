@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-##4$x)+a0%=%saf7()5vrs)w80(84%)(tp#pda%454+m64z(#$
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['0403.pythonanywhere.com', 'image-uploader-ashen-chi.vercel.app']
+ALLOWED_HOSTS = ['0403.pythonanywhere.com']
 
 
 # Application definition
@@ -113,7 +113,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    'https://pics-uploader.vercel.app'
+    'https://pics-uploader.vercel.app/'
 ]
 # settings.py
 

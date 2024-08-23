@@ -69,13 +69,13 @@ const onDrop = useCallback((event) => {
             {/* <p className="absolute top-[50%] left-[50%] ">Hi</p> */}
             <input type="file" onChange = {handleFileInput} className=" hidden" ref={fileInputRef}/>
             <div className="h-full w-full rounded">
-            <img src = {imgPath?`https://0403.pythonanywhere.com${imgPath}`: ' '} className="h-full w-full"/> 
+            <img src = {imgPath?`https://0403.pythonanywhere.com${imgPath}/`: ' '} className="h-full w-full"/> 
             </div> 
           </div>
           <div className="">
           {message == 'Uploaded Sucessfully'?
           <div className="flex">
-            <input type="text" value={`https://0403.pythonanywhere.com${imgPath}`} ref={clipboardRef} className="border-2 bg-slate-200 p-2 text-slate-500"/>
+            <input type="text" value={`https://0403.pythonanywhere.com${imgPath}/`} ref={clipboardRef} className="border-2 bg-slate-200 p-2 text-slate-500"/>
             <button className="bg-blue-500 p-2 rounded text-white" onClick={handleClipboard}>Copy URL</button>
           </div>
           // http://localhost:8000${imgPath}
