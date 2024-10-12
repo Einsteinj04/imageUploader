@@ -60,7 +60,7 @@ const onDrop = useCallback((event) => {
           </div>
           :
           <>
-            <h1 className="p-3 text-xl text-[#4F4F4F]">Upload your image</h1>
+            <h1 className="p-3 text-xl text-[#4F4F4F]">Upload your images</h1>
             <p className="text-xs text-slate-500">File should be Jpeg, Png,...</p>
           </>}
           <div className="border-8 h-52 w-full bg-slate-100 rounded my-5 border-dotted border-slate-300"
